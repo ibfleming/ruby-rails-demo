@@ -61,3 +61,5 @@ end
 gem "shakapacker", "= 9.2"
 
 gem "react_on_rails", "= 16.1.1"
+
+gem "foreman", "~> 0.90.0"
