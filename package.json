@@ -6,6 +6,11 @@
   "browserslist": [
     "defaults"
   ],
+  "scripts": {
+    "dev": "bin/dev kill && ./bin/dev",
+    "dev:static": "bin/dev kill && ./bin/dev static",
+    "prod": "bin/dev kill && ./bin/dev prod"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.27.1",
     "@swc/core": "^1.13.5",
