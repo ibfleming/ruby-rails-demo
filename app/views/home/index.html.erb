@@ -1,4 +1,16 @@
-<div>
-  <h1 class="font-bold text-4xl text-amber-800">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="font-bold text-4xl text-amber-800 mb-4">Rails + React Demo</h1>
+  <p class="text-gray-600 mb-8">Server-side routing with React component hydration</p>
+  
+  <%= react_component(
+    "Greeting", 
+    { name: "World", message: "This is a React component rendered in Rails!" },
+    { class: "mb-4" }
+  ) %>
+  
+  <%= react_component(
+    "Greeting",
+    { name: "Developer", message: "Add more components to app/frontend/components/ and register them in components.jsx" },
+    { class: "mb-4" }
+  ) %>
 </div>
