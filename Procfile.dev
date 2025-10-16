@@ -1,2 +1,3 @@
 web: bin/rails server
+vite: bin/vite dev
 css: bin/rails tailwindcss:watch
