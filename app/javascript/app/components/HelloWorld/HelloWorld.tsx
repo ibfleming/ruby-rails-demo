@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import type { FunctionComponent } from 'react'
 
 import HelloWorldMdx from './HelloWorld.mdx'
-import style from './HelloWorld.module.css'
+import * as style from './HelloWorld.module.css'
 import logo from './logo.svg'
 
 export interface Props {
@@ -21,8 +21,8 @@ const HelloWorld: FunctionComponent<Props> = (props: Props) => {
       'color: green; background-color: lightgreen; font-weight: bold;',
       'ShakaCode is hiring!',
       'color: green; background-color: lightgreen; font-weight: normal;',
-      'Check out our open positions: https://www.shakacode.com/career/',
-    );
+      'Check out our open positions: https://www.shakacode.com/career/'
+    )
   }, [])
 
   return (

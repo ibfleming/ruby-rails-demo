@@ -3,13 +3,34 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "module": "es6",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "sourceMap": true,
     "target": "es5",
     "jsx": "react",
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "app/javascript/app/*"
+      ],
+      "@components/*": [
+        "app/javascript/app/components/*"
+      ],
+      "@packs/*": [
+        "app/javascript/packs/*"
+      ],
+      "@bundles/*": [
+        "app/javascript/bundles/*"
+      ]
+    }
+  },
+  "mdx": {
+    "checkMdx": true
   },
   "exclude": [
     "**/*.spec.ts",

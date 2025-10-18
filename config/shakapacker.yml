@@ -8,6 +8,11 @@ default: &default
   cache_path: tmp/shakapacker
   webpack_compile_output: true
 
+  # Use babel-loader instead of swc-loader (Shakapacker 9.x defaults to swc)
+  # We have babel configured with all necessary presets
+  # Available options: 'swc' (default, 20x faster), 'babel', or 'esbuild'
+  javascript_transpiler: 'babel'
+
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
   additional_paths: []
@@ -36,7 +41,7 @@ development:
       #  port: 8080
     compress: true
     # Note that apps that do not check the host are vulnerable to DNS rebinding attacks
-    allowed_hosts: [ 'localhost' ]
+    allowed_hosts: ['localhost']
     pretty: true
     headers:
       'Access-Control-Allow-Origin': '*'

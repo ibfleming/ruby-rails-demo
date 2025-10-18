@@ -1,16 +1,22 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.4.7'
+
+# Standard libraries
+gem 'base64'
+gem 'bigdecimal'
+gem 'mutex_m'
+gem 'drb'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', '~> 2.4'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 6.5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.13'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -28,34 +34,32 @@ group :development, :test, :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 6.0.0'
+  gem 'rspec-rails', '~> 7.1'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 4.2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # Note: Spring is deprecated in favor of bootsnap
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  # There is an important fix in 3.39.1.
-  gem 'capybara', '~> 3.39.1'
+  gem 'capybara', '~> 3.40'
   # gem 'capybara-webkit'
-  gem 'selenium-webdriver', '>= 4.9'
+  gem 'selenium-webdriver', '>= 4.27'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "shakapacker", "8.0.0"
-gem "react_on_rails", "14.0.3"
+gem "shakapacker", "~> 9.2"
+gem "react_on_rails", "~> 16.1"
 
-gem "net-smtp", "~> 0.3.3"
+# Psych 4+ is now compatible with Rails 7.x
+# gem "net-smtp" is now part of standard library in Ruby 3.4
 
-# Psych 4+ comes with breakibg changes in Ruby 3.1.0. Though the issue are
-# addressed in Rails 7. So remove this the next line in Rails 7.
-gem 'psych', '< 4'
+gem "foreman", "~> 0.90.0"
