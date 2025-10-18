@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import type { FunctionComponent } from 'react'
 
 import HelloWorldMdx from './HelloWorld.mdx'
-import * as style from './HelloWorld.module.css'
+import * as styles from '@styles/application.module.css'
 import logo from './logo.svg'
 
 export interface Props {
@@ -27,11 +27,11 @@ const HelloWorld: FunctionComponent<Props> = (props: Props) => {
 
   return (
     <>
-      <img src={logo} className={style.logo} alt="logo" />
+      <img src={logo} className={styles.logo} alt="logo" />
       <HelloWorldMdx name={name} />
       <hr />
       <form>
-        <label className={style.bright} htmlFor="name">
+        <label className={styles.bright} htmlFor="name">
           Say hello to:{' '}
           <input
             id="name"

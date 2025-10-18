@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,17 +17,20 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "app/javascript/app/*"
-      ],
-      "@components/*": [
-        "app/javascript/app/components/*"
-      ],
-      "@packs/*": [
-        "app/javascript/packs/*"
+        "client/app/*"
       ],
       "@bundles/*": [
-        "app/javascript/bundles/*"
-      ]
+        "client/app/bundles/*"
+      ],
+      "@components/*": [
+        "client/app/components/*"
+      ],
+      "@packs/*": [
+        "client/app/packs/*"
+      ],
+      "@styles/*": [
+        "client/app/styles/*"
+      ],
     }
   },
   "mdx": {

@@ -6,13 +6,11 @@ const commonOptions = {
   resolve: {
     extensions: ['.css', '.ts', '.tsx'],
     alias: {
-      '@': path.resolve(__dirname, '../../app/javascript/app'),
-      '@components': path.resolve(
-        __dirname,
-        '../../app/javascript/app/components'
-      ),
-      '@packs': path.resolve(__dirname, '../../app/javascript/packs'),
-      '@bundles': path.resolve(__dirname, '../../app/javascript/bundles')
+      '@': path.resolve(__dirname, '../../client/app'),
+      '@bundles': path.resolve(__dirname, '../../client/app/bundles'),
+      '@components': path.resolve(__dirname, '../../client/app/components'),
+      '@packs': path.resolve(__dirname, '../../client/app/packs'),
+      '@styles': path.resolve(__dirname, '../../client/app/styles')
     }
   },
   module: {

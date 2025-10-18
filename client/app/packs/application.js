@@ -14,4 +14,11 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// Import application styles
+import '../styles/application.css'
+
+import './client-bundle'
+
+import './server-bundle'
+
 // console.log('Hello World from shakapacker')

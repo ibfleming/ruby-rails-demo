@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>TestReactOnRailsV12SsrV2</title>
+    <title>SELestial</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="icon" href="/favicon.ico" type="image/png">
+    <link rel="icon" href="/favicon.ico" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
