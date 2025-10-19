@@ -1,19 +1,13 @@
 {
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
-    "declaration": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "target": "es5",
     "lib": [
       "es6",
       "dom"
     ],
     "module": "es6",
     "moduleResolution": "bundler",
-    "sourceMap": true,
-    "target": "es5",
     "jsx": "react",
-    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -30,11 +24,14 @@
       ],
       "@styles/*": [
         "client/app/assets/styles/*"
-      ],
-    }
-  },
-  "mdx": {
-    "checkMdx": true
+      ]
+    },
+    "declaration": false,
+    "sourceMap": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "ignoreDeprecations": "5.0"
   },
   "exclude": [
     "**/*.spec.ts",
@@ -42,5 +39,8 @@
     "vendor",
     "public"
   ],
+  "mdx": {
+    "checkMdx": true
+  },
   "compileOnSave": false
 }
