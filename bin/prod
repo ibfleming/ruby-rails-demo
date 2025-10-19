@@ -8,7 +8,7 @@ rescue Errno::ENOENT
 end
 
 def run(process)
-  system "#{process} start -f Procfile.dev-static"
+  system "#{process} start -f Procfile.prod"
 rescue Errno::ENOENT
   warn <<~MSG
     ERROR:
