@@ -8,6 +8,7 @@
     "module": "es6",
     "moduleResolution": "bundler",
     "jsx": "react",
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -31,7 +32,6 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "ignoreDeprecations": "5.0"
   },
   "exclude": [
     "**/*.spec.ts",

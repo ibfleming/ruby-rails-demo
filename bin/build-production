@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+set -e
+
+echo "=========================================="
+echo "🚀 Production Build Script"
+echo "=========================================="
+echo ""
+
+# Check for required environment variables
+if [ -z "$SECRET_KEY_BASE" ]; then
+  echo "⚠️  WARNING: SECRET_KEY_BASE not set"
+  echo "   For production, you must set SECRET_KEY_BASE environment variable"
+  echo "   Example: export SECRET_KEY_BASE=\$(rails secret)"
+  echo ""
+  read -p "Continue with temporary key for testing? (y/N) " -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "❌ Build cancelled"
+    exit 1
+  fi
+  export SECRET_KEY_BASE="temporary_key_for_build_only_$(openssl rand -hex 32)"
+  echo "✅ Using temporary SECRET_KEY_BASE for build"
+  echo ""
+fi
+
+# Set production environment
+export RAILS_ENV=production
+export NODE_ENV=production
+
+echo "📋 Environment:"
+echo "   RAILS_ENV: $RAILS_ENV"
+echo "   NODE_ENV: $NODE_ENV"
+echo "   Ruby: $(ruby -v)"
+echo "   Node: $(node -v)"
+echo "   Yarn: $(yarn -v)"
+echo ""
+
+# Clean previous builds
+echo "🧹 Cleaning previous builds..."
+rm -rf public/packs
+rm -rf tmp/cache/webpacker
+rm -rf tmp/server-generated-*.js
+echo "✅ Cleaned"
+echo ""
+
+# Install dependencies
+echo "📦 Installing Ruby dependencies..."
+bundle check || bundle install --without development test
+echo "✅ Ruby dependencies installed"
+echo ""
+
+echo "📦 Installing JavaScript dependencies..."
+yarn install --frozen-lockfile
+echo "✅ JavaScript dependencies installed"
+echo ""
+
+# Precompile assets
+echo "🔨 Compiling production assets..."
+echo "   This may take a few minutes..."
+bundle exec rake assets:precompile
+echo "✅ Assets compiled successfully"
+echo ""
+
+# Verify build outputs
+echo "🔍 Verifying build outputs..."
+if [ ! -d "public/packs" ]; then
+  echo "❌ ERROR: public/packs directory not found"
+  exit 1
+fi
+
+if [ ! -f "public/packs/manifest.json" ]; then
+  echo "❌ ERROR: manifest.json not found"
+  exit 1
+fi
+
+CLIENT_BUNDLE=$(find public/packs -name "client-bundle-*.js" | head -n 1)
+SERVER_BUNDLE=$(find public/packs -name "server-bundle.js" | head -n 1)
+
+if [ -z "$CLIENT_BUNDLE" ]; then
+  echo "❌ ERROR: Client bundle not found"
+  exit 1
+fi
+
+if [ -z "$SERVER_BUNDLE" ]; then
+  echo "❌ ERROR: Server bundle not found"
+  exit 1
+fi
+
+echo "✅ Client bundle: $(basename $CLIENT_BUNDLE)"
+echo "✅ Server bundle: $(basename $SERVER_BUNDLE)"
+echo ""
+
+# Show build statistics
+echo "📊 Build Statistics:"
+echo "   Total assets: $(find public/packs -type f | wc -l | tr -d ' ')"
+echo "   JavaScript: $(find public/packs -name "*.js" | wc -l | tr -d ' ') files"
+echo "   CSS: $(find public/packs -name "*.css" | wc -l | tr -d ' ') files"
+echo "   Total size: $(du -sh public/packs | cut -f1)"
+echo ""
+
+# Database migrations check
+echo "🗄️  Database migrations..."
+if bundle exec rake db:migrate:status > /dev/null 2>&1; then
+  echo "✅ Database is ready"
+else
+  echo "⚠️  Database may need setup or migrations"
+  echo "   Run: bundle exec rake db:migrate"
+fi
+echo ""
+
+echo "=========================================="
+echo "✅ Production build completed successfully!"
+echo "=========================================="
+echo ""
+echo "📝 Next steps for deployment:"
+echo "   1. Set SECRET_KEY_BASE environment variable on production server"
+echo "   2. Copy the public/packs directory to your production server"
+echo "   3. Run database migrations: bundle exec rake db:migrate"
+echo "   4. Start the server: bundle exec puma -C config/puma.rb"
+echo ""
+echo "💡 To test locally:"
+echo "   SECRET_KEY_BASE=\$(rails secret) bundle exec rails s -e production"
+echo ""
