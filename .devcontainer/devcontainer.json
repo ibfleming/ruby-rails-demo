@@ -20,12 +20,6 @@
     "ghcr.io/devcontainers/features/node": {},
     "ghcr.io/rails/devcontainer/features/sqlite3": {}
   },
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [
-    3000
-  ],
-  // Configure tool-specific properties.
-  // "customizations": {},
   // Uncomment to connect as root instead. More info: https://containers.dev/implementors/json_reference/#remoteUser.
   // "remoteUser": "root",
   // Use 'postCreateCommand' to run commands after the container is created.

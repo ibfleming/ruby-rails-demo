@@ -1,10 +1,12 @@
-name: "selestial"
+name: 'selestial'
 
 services:
   rails-app:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+
+    network_mode: host
 
     tty: true
     stdin_open: true
@@ -17,6 +19,3 @@ services:
 
     # Uncomment the next line to use a non-root user for all processes.
     # user: vscode
-
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
-    # (Adding the "ports" property to this file will not forward from a Codespace.)

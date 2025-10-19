@@ -22,29 +22,36 @@ default: &default
 
 development:
   <<: *default
-  # This is false since we're running `bin/shakapacker -w` in Procfile.dev-setic
-  compile: false
+  # Must be true to enable webpack-dev-server and HMR
+  compile: true
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
-    host: localhost
+    host: 0.0.0.0
     port: 3035
     # Hot Module Replacement updates modules while the application is running without a full reload
     hmr: true
     client:
       # Should we show a full-screen overlay in the browser when there are compiler errors or warnings?
       overlay: true
-      # May also be a string
-      # webSocketURL:
-      #  hostname: "0.0.0.0"
-      #  pathname: "/ws"
-      #  port: 8080
+      # Explicit WebSocket URL configuration - with host networking, use localhost
+      webSocketURL:
+        hostname: 'localhost'
+        pathname: '/ws'
+        port: 3035
+        protocol: 'ws'
+      logging: 'info'
+      progress: true
+      reconnect: 10
+    webSocketServer: 'ws'
     compress: true
-    # Note that apps that do not check the host are vulnerable to DNS rebinding attacks
-    allowed_hosts: ['localhost']
+    allowed_hosts: 'all'
     pretty: true
     headers:
       'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    # Watch options for file changes
     static:
       watch:
         ignored: '**/node_modules/**'

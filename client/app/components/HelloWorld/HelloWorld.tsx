@@ -30,7 +30,7 @@ const HelloWorld: FunctionComponent<Props> = (props: Props) => {
       <hr />
       <form>
         <label className={styles.bright} htmlFor="name">
-          Say hello to!!!
+          Say hello to{' '}
           <input
             id="name"
             type="text"

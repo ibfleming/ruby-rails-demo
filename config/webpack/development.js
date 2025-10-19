@@ -13,7 +13,9 @@ const developmentEnvOnly = (clientWebpackConfig, serverWebpackConfig) => {
     clientWebpackConfig.plugins.push(
       new ReactRefreshWebpackPlugin({
         overlay: {
-          sockPort: devServer.port
+          sockHost: devServer.host || 'localhost',
+          sockPort: devServer.port,
+          sockProtocol: 'ws'
         }
       })
     )
