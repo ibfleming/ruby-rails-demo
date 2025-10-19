@@ -10,7 +10,7 @@ const commonOptions = {
       '@bundles': path.resolve(__dirname, '../../client/app/bundles'),
       '@components': path.resolve(__dirname, '../../client/app/components'),
       '@packs': path.resolve(__dirname, '../../client/app/packs'),
-      '@styles': path.resolve(__dirname, '../../client/app/styles')
+      '@styles': path.resolve(__dirname, '../../client/app/assets/styles')
     }
   },
   module: {

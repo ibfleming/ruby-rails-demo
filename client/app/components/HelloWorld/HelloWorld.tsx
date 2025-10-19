@@ -4,7 +4,6 @@ import type { FunctionComponent } from 'react'
 
 import HelloWorldMdx from './HelloWorld.mdx'
 import * as styles from '@styles/application.module.css'
-import logo from './logo.svg'
 
 export interface Props {
   readonly name: string
@@ -27,12 +26,11 @@ const HelloWorld: FunctionComponent<Props> = (props: Props) => {
 
   return (
     <>
-      <img src={logo} className={styles.logo} alt="logo" />
       <HelloWorldMdx name={name} />
       <hr />
       <form>
         <label className={styles.bright} htmlFor="name">
-          Say hello to:{' '}
+          Say hello to!!!
           <input
             id="name"
             type="text"

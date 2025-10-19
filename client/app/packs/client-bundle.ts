@@ -6,8 +6,10 @@ import ReactOnRails from 'react-on-rails/client'
 
 // Using alias: @components instead of relative path
 import HelloWorld from '@components/HelloWorld/HelloWorld'
+import RouterApp from '@components/RouterApp/RouterApp.client'
 
 // This is how react_on_rails can see the HelloWorld in the browser.
 ReactOnRails.register({
-  HelloWorld
+  HelloWorld,
+  RouterApp
 })

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   layout 'application'
   def index
-    @hello_world_props = { name: "Stranger" }
+    @router_app_props = { name: "Router User" }
   end
 end
